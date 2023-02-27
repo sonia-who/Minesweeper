@@ -29,7 +29,8 @@ void setup ()
 }
 public void setMines()
 {
-    //your code
+    int r = (int)(Math.random() * NUM_ROWS);
+    int c = (int)(Math.random() * NUM_COLS);
 }
 
 public void draw ()
