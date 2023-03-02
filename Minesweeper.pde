@@ -25,8 +25,8 @@ void setup ()
       }
     }
     
-    
-    setMines();
+    for(int i = 0; i < NUM_BOMBS; i++)
+     setMines();
 }
 public void setMines()
 {
@@ -66,6 +66,15 @@ public int countMines(int row, int col)
 {
     int numMines = 0;
     //your code here
+    for(int r = row-1; r<= row+1; r++) {
+        for(int c = col-1; c<=col+1;c++) {
+            if(isValid(r, c) && mines.contains(buttons[r][j])) {
+                numMines++;
+            }
+        }
+    }
+    
+    if (mines.contains(buttons[row][col])) numMines--;
     return numMines;
 }
 public class MSButton
