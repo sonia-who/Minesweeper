@@ -1,4 +1,4 @@
- de.bezier.guido.*;
+import de.bezier.guido.*;
 //Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 public final static int NUM_ROWS = 10;
 public final static int NUM_COLS = 10;
@@ -45,12 +45,20 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
-    return false;
+    for(int r = 0; r < NUM_ROWS; r++) {
+      for(int c = 0; c <   NUM_COLS; c++) {
+        if(buttons[r][c].clicked == false) {
+        return false;
+        }
+      }
+    }
+    return true;
 }
 public void displayLosingMessage()
 {
-    //your code here
+  textSize(20);  
+  text("You lose sucker", CENTER, CENTER);
+    
 }
 public void displayWinningMessage()
 {
@@ -105,6 +113,15 @@ public class MSButton
         clicked = true;
         //your code here
         
+        if(mouseButton == RIGHT) {
+          flagged = !flagged;
+        } else if (mines.contains( this )) {
+          displayLosingMessage();
+        } else if (countMines(myRow, myCol) > 0) {
+          myLabel = Integer.toString(countMines(myRow, myCol));
+        } else { 
+
+        
         for(int r = myRow-1; r <= myRow+1; r++) {
           for(int c = myCol-1; c <= myCol+1; c++) {
             if(isValid(r, c) && countMines(r, c) == 0 && buttons[r][c].clicked == false) {
@@ -114,6 +131,7 @@ public class MSButton
             }
           }
         }  
+      }
         
        
     }
