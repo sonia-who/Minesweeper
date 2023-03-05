@@ -2,7 +2,7 @@ import de.bezier.guido.*;
 //Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 public final static int NUM_ROWS = 20;
 public final static int NUM_COLS = 20;
-public final static int NUM_BOMBS = 1;
+public final static int NUM_BOMBS = 10;
 
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton>(); //ArrayList of just the minesweeper buttons that are mined
@@ -39,7 +39,7 @@ public void setMines()
       mines.add(buttons[r][c]);
       i++;
     }
-    System.out.println(r + ", " + c);
+    //System.out.println(r + ", " + c);
   }  
 }
 
@@ -81,7 +81,6 @@ public void displayLosingMessage()
     buttons[NUM_ROWS/2][NUM_COLS/2 + 3].setLabel("!"); 
     
     /*
-    String lose = "     YOU LOSE";
     for (int i = 0; i < NUM_COLS-1; i++) {  
       buttons[NUM_COLS / 2][i].setLabel(lose.substring(i, i+1));
     }
@@ -90,7 +89,6 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-  //String win = "     YOU WIN!";
   if(isWon()) {
     buttons[NUM_ROWS/2][NUM_COLS/2 - 5].setLabel("Y"); 
     buttons[NUM_ROWS/2][NUM_COLS/2 - 4].setLabel("O"); 
